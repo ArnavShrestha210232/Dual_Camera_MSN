@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <sched.h>
+#include <sched.h> 
 #include <termios.h>
 
 #define UART4_DEV "/dev/ttyS1"
