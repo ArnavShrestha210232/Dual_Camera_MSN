@@ -460,20 +460,21 @@ int camera_MSN2_main(int argc, char *argv[])
   pthread_t sub_thread;
   pthread_create(&sub_thread, NULL, ring_buffer_subscriber_task, NULL);
 
+ /* CAM 1 = RGB (SPI4 / /dev/ttyS3) */
   camera_ctx_t cam1_ctx = {
       .camera_id = 1,
-      .uart_dev = "/dev/ttyS2",
-      .uart_dev2 = NULL,
-      .spi_bus = 3,
-      .image_buf = g_cam1_img_buf};
-
-  camera_ctx_t cam2_ctx = {
-      .camera_id = 2,
       .uart_dev = "/dev/ttyS3",
       .uart_dev2 = NULL,
       .spi_bus = 4,
-      .image_buf = g_cam2_img_buf};
+      .image_buf = g_cam1_img_buf};
 
+  /* CAM 2 = NIR (SPI3 / /dev/ttyS2) */
+  camera_ctx_t cam2_ctx = {
+      .camera_id = 2,
+      .uart_dev = "/dev/ttyS2",
+      .uart_dev2 = NULL,
+      .spi_bus = 3,
+      .image_buf = g_cam2_img_buf};
   pthread_t thread1, thread2;
 
   pthread_attr_t attr;
